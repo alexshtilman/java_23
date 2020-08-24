@@ -23,11 +23,11 @@ public class SetOperations {
 	 *         {1,2}
 	 */
 	public static int[] intersection(int array1[], int array2[]) {
+		if (hasRepeated(array1) || hasRepeated(array2))
+			throw new IllegalArgumentException();
 		HashSet<Integer> ar1 = new HashSet<Integer>(Arrays.asList(toInteger(array1)));
 		HashSet<Integer> ar2 = new HashSet<Integer>(Arrays.asList(toInteger(array2)));
-		boolean intersect = ar1.retainAll(ar2);
-		if (!intersect)
-			throw new IllegalArgumentException();
+		ar1.retainAll(ar2);
 		return toInt(ar1);
 	}
 
@@ -52,12 +52,11 @@ public class SetOperations {
 	 *         ar2 -> {1,2,8,9} => result -> {1,2,3,4,8,9}
 	 */
 	public static int[] union(int array1[], int array2[]) {
+		if (hasRepeated(array1) || hasRepeated(array2))
+			throw new IllegalArgumentException();
 		HashSet<Integer> ar1 = new HashSet<Integer>(Arrays.asList(toInteger(array1)));
 		HashSet<Integer> ar2 = new HashSet<Integer>(Arrays.asList(toInteger(array2)));
-		boolean uni = ar1.addAll(ar2);
-		if (!uni || (array1.length == 0 && array2.length == 0))
-			throw new IllegalArgumentException();
-
+		ar1.addAll(ar2);
 		return toInt(ar1);
 	}
 
@@ -71,12 +70,11 @@ public class SetOperations {
 	 *         {3,4}
 	 */
 	public static int[] subtraction(int array1[], int array2[]) {
+		if (hasRepeated(array1) || hasRepeated(array2))
+			throw new IllegalArgumentException();
 		HashSet<Integer> ar1 = new HashSet<Integer>(Arrays.asList(toInteger(array1)));
 		HashSet<Integer> ar2 = new HashSet<Integer>(Arrays.asList(toInteger(array2)));
-		boolean sub = ar1.removeAll(ar2);
-		if (!sub || (array1.length == 0 && array2.length == 0))
-			throw new IllegalArgumentException();
-
+		ar1.removeAll(ar2);
 		return toInt(ar1);
 	}
 
@@ -96,3 +94,4 @@ public class SetOperations {
 		return intArray;
 	}
 }
+

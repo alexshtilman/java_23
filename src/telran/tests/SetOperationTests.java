@@ -26,33 +26,42 @@ class SetOperationTests {
 		int noIntersection[] = { 99, -3, 7 };
 		int empty[] = {};
 		int expected[] = { 1, 2 };
-		int expected2[] = { 1 };
+
 		assertArrayEquals(expected, SetOperations.intersection(array1, array2));
-		assertArrayEquals(expected2, SetOperations.intersection(array1, array3));
 		try {
 			SetOperations.intersection(array1, noIntersection);
 		} catch (IllegalArgumentException e) {
-			// expected
+			// unexpected
+			fail("unexpected");
 		}
 		try {
 			SetOperations.intersection(array2, empty);
+		} catch (IllegalArgumentException e) {
+			// unexpected
+			fail("unexpected");
+		}
+		try {
+			SetOperations.intersection(array1, array3);
 		} catch (IllegalArgumentException e) {
 			// expected
 		}
 		try {
 			SetOperations.intersection(empty, array1);
 		} catch (IllegalArgumentException e) {
-			// expected
+			// unexpected
+			fail("unexpected");
 		}
 		try {
 			SetOperations.intersection(empty, empty);
 		} catch (IllegalArgumentException e) {
-			// expected
+			// unexpected
+			fail("unexpected");
 		}
 		try {
 			SetOperations.intersection(array1, array1);
 		} catch (IllegalArgumentException e) {
-			// expected
+			// unexpected
+			fail("unexpected");
 		}
 	}
 
@@ -83,7 +92,8 @@ class SetOperationTests {
 		try {
 			SetOperations.union(array2, empty);
 		} catch (IllegalArgumentException e) {
-			// expected
+			// unexpected
+			fail("unexpected");
 		}
 		try {
 			SetOperations.union(empty, array1);
@@ -94,12 +104,14 @@ class SetOperationTests {
 		try {
 			SetOperations.union(empty, empty);
 		} catch (IllegalArgumentException e) {
-			// expected
+			// unexpected
+			fail("unexpected");
 		}
 		try {
 			SetOperations.union(array1, array1);
 		} catch (IllegalArgumentException e) {
-			// expected
+			// unexpected
+			fail("unexpected");
 		}
 		try {
 			SetOperations.union(array1, array3);
@@ -116,28 +128,37 @@ class SetOperationTests {
 		int noIntersection[] = { 99, -3, 7 };
 		int empty[] = {};
 		int expected[] = { 3, 4 };
-		int expected2[] = { 2, 3, 4 };
+
 		assertArrayEquals(expected, SetOperations.subtraction(array1, array2));
-		assertArrayEquals(expected2, SetOperations.subtraction(array1, array3));
+
 		try {
 			SetOperations.subtraction(array1, noIntersection);
 		} catch (IllegalArgumentException e) {
-			// expected
+			// unexpected
+			fail("unexpected");
 		}
 		try {
 			SetOperations.subtraction(array2, empty);
+		} catch (IllegalArgumentException e) {
+			// unexpected
+			fail("unexpected");
+		}
+		try {
+			SetOperations.subtraction(array1, array3);
 		} catch (IllegalArgumentException e) {
 			// expected
 		}
 		try {
 			SetOperations.subtraction(empty, array1);
 		} catch (IllegalArgumentException e) {
-			// expected
+			// unexpected
+			fail("unexpected");
 		}
 		try {
 			SetOperations.subtraction(empty, empty);
 		} catch (IllegalArgumentException e) {
-			// expected
+			// unexpected
+			fail("unexpected");
 		}
 		try {
 			SetOperations.subtraction(array1, array1);
@@ -147,3 +168,4 @@ class SetOperationTests {
 		}
 	}
 }
+
